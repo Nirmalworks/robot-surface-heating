@@ -396,7 +396,7 @@ control itself is provided off the shelf by the Universal Robots ROS 2 driver
 and MoveIt; you do not write a driver. The heating code sits entirely on top of
 that foundation.
 
-![Keep vs. drop](assets/04-keep-vs-drop.png)
+![Keep vs. drop](04-keep-vs-drop.png)
 
 ### Keep — the robot-driving foundation
 
