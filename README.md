@@ -31,7 +31,7 @@ into a target pose, and the arm moves there and applies heat. As each cold spot
 warms, a new coldest region appears, and the loop continues until the surface is
 evenly heated.
 
-![Closed-loop control cycle](assets/01-control-loop.png)
+![Closed-loop control cycle](01-control-loop.png)
 
 ---
 
