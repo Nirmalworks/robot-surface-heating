@@ -1,0 +1,39 @@
+/uvc_visualize:
+  ros__parameters:
+    camera_count: 4
+    # camera_count: 1
+    buffer_size: 2
+    camera_intrinsics_path: "calibration_data/intrinsic/lepton"
+    camera_extrinsics_path: "calibration_data/extrinsic/lepton"
+/thermal_camera_publisher:
+  ros__parameters:
+    camera_count: 4
+    # camera_count: 1
+    buffer_size: 2
+    camera_intrinsics_path: "calibration_data/intrinsic/lepton"
+    camera_extrinsics_path: "calibration_data/extrinsic/lepton"
+/camera_frame_broadcaster:
+  ros__parameters:
+    camera_count: 4
+    extrinsics_path: "calibration_data/extrinsic"
+    # extrinsics_prefix: "extrinsic_calib"
+    # extrinsics_prefix: "extrinsic_calib_2_"
+    # extrinsics_prefix: "extrinsic_calib_big_box_"
+    # extrinsics_prefix: "extrinsic_calib_big_box_2_"
+    # extrinsics_prefix: "extrinsic_calib_big_box_3_"
+    # extrinsics_prefix: "extrinsic_calib_demo_"
+    # extrinsics_prefix: "A_extrinsic_calib_post_demo_"
+    # extrinsics_prefix: 'dummy_'
+    # extrinsics_prefix: 'coldest_node_'
+    # extrinsics_prefix: '09_23_25_calibration_'
+    # extrinsics_prefix: '11_20_25_calibration_' 
+    extrinsics_prefix: '03_03_26_calibration_'
+    # extrinsics_file: "extrinsics_BA"
+    extrinsics_file: "extrinsics"
+# /thermal_camera_publisher_1:
+#   ros__parameters:
+#     # camera_count: 4
+#     camera_count: 1
+#     buffer_size: 2
+#     camera_intrinsics_path: "calibration_data/intrinsic/lepton"
+#     camera_extrinsics_path: "calibration_data/extrinsic/lepton"

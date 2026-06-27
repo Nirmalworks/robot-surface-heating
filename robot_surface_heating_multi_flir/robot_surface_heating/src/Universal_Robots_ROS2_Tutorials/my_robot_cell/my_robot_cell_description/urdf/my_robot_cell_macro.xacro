@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro"/>
+  <!-- <xacro:include filename="$(find ur_description)/urdf/u5_macro.xacro"/> -->
+
+  <!-- <xacro:macro name="my_robot_cell" params="
+    parent
+    ur_type_1
+    joint_limits_parameters_file_1
+    kinematics_parameters_file_1
+    physical_parameters_file_1
+    visual_parameters_file_1
+    ur_type_2
+    joint_limits_parameters_file_2
+    kinematics_parameters_file_2
+    physical_parameters_file_2
+    visual_parameters_file_2
+    "> -->
+  <xacro:macro name="my_robot_cell" params="
+    parent
+    ur_type_1
+    joint_limits_parameters_file_1
+    kinematics_parameters_file_1
+    physical_parameters_file_1
+    visual_parameters_file_1
+    ">
+
+    <!--This will create the specific robot-->
+    <xacro:ur_robot
+      name="${ur_type_1}"
+      tf_prefix=""
+      parent="${parent}"
+      joint_limits_parameters_file="${joint_limits_parameters_file_1}"
+      kinematics_parameters_file="${kinematics_parameters_file_1}"
+      physical_parameters_file="${physical_parameters_file_1}"
+      visual_parameters_file="${visual_parameters_file_1}"
+    >
+      <!-- apply transformation of ur10e with respect to ur5 here -->
+      <!-- <origin xyz="-1.3447 -0.00144 0.0262" rpy="-0.010024 0.07707 -0.04363" />    old calibration, before moveout -->
+      <!-- <origin xyz="-1.4797373713103798 0.0091554151594637 -0.021215896312304494" rpy="0.016730951338210454 -0.003778082926849259 0.02723036097746971"/> -->
+      <!-- <origin xyz="0 0 0.0262" rpy="0.016730951338210454 -0.003778082926849259 0.02723036097746971"/> -->
+      <!-- <origin xyz="0 0 0.0262" rpy="0.016730951338210454 0 0.02723036097746971"/> -->
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:ur_robot>
+
+    <!-- <xacro:ur5_macro
+      name="${ur_type_2}"
+      tf_prefix="arm_0_"
+      parent="${parent}"
+      joint_limits_parameters_file="${joint_limits_parameters_file_2}"
+      kinematics_parameters_file="${kinematics_parameters_file_2}"
+      physical_parameters_file="${physical_parameters_file_2}"
+      visual_parameters_file="${visual_parameters_file_2}"
+    >
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:ur5_macro> -->
+
+    <!-- <xacro:include filename="$(find robotiq_description)/urdf/robotiq_2f_85_macro.urdf.xacro" /> -->
+    <xacro:arg name="use_fake_hardware" default="false" />
+
+    <!-- <link name="world" />
+    <xacro:robotiq_gripper name="RobotiqGripperHardwareInterface" prefix="" parent="arm_0_flange" use_fake_hardware="$(arg use_fake_hardware)">
+      <origin xyz="0.014 0 0" rpy="0 ${pi/2.0} 0"/>
+    </xacro:robotiq_gripper>
+
+    <xacro:robotiq_gripper name="ur10e_gri" prefix="ur10e_gri" parent="flange" use_fake_hardware="$(arg use_fake_hardware)">
+      <origin xyz="0.014 0 0" rpy="0 ${pi/2.0} 0"/>
+      vvv adjusted for custom gripper installment vvv
+      <origin xyz="0.014 0 0" rpy="${pi/2.0} 0 ${pi/2.0}"/>
+    </xacro:robotiq_gripper> -->
+
+    <!-- add heat gun CAD -->
+    <link name="heat_gun">
+      <visual>
+        <!-- <origin xyz="0.02 -0.03454 -0.15627" rpy="${pi/2.0} 0 ${pi/2.0}"/> -->
+        <origin xyz="0.15627 -0.0357 -.24606" rpy="0 0 ${pi/2.0}"/>
+        <geometry>
+          <mesh filename="package://my_robot_cell_description/meshes/heat_gun.dae" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+
+      <collision>
+        <origin xyz="0.15627 -0.0357 -.24606" rpy="0 0 ${pi/2.0}"/>
+        <geometry>
+          <mesh filename="package://my_robot_cell_description/meshes/heat_gun_collision.STL" scale="0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="heat_gun_mount" type="fixed">
+      <parent link="flange"/>
+      <child link="heat_gun"/>
+      <origin xyz=".25781 0.0 0.0" rpy="${pi/2.0} 0 ${pi/2.0}"/>
+    </joint>
+  
+  </xacro:macro>
+
+</robot>

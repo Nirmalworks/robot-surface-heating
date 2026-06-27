@@ -1,0 +1,83 @@
+# ============================================================
+# .gitignore for robot_surface_heating (UR10e + FLIR thermal)
+# ============================================================
+
+# --- macOS junk ---
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# --- ROS 2 / colcon build artifacts ---
+build/
+install/
+log/
+*.bag
+*.bag.active
+*.db3
+*.db3-shm
+*.db3-wal
+
+# --- ROS 1 / catkin build artifacts ---
+devel/
+.catkin_tools/
+.catkin_workspace
+
+# --- C / C++ build artifacts ---
+*.o
+*.obj
+*.a
+*.lib
+*.dylib
+*.la
+*.lo
+*.slo
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# --- IDE / editor ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- Large data files (exceed GitHub 100 MB limit; tracked separately) ---
+coldest_node_data/
+coldest_node_data.zip
+thermal_npz_datasets/
+thermal_data_bag/
+calibration_data/
+nd-composite-core.txt
+nd-metal-curved.txt
+data.rrd
+*.npz
+*.rosbag
+*.bag
+
+# --- Rendered/derived artifacts ---
+RenderOption_*.json
+frames_*.gv
+frames_*.pdf
+
+# --- Misc ---
+*.log
+*_calib_log
+lepton*_extrinsic_calib_log

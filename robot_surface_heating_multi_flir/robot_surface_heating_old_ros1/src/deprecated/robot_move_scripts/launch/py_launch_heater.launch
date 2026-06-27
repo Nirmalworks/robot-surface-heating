@@ -1,0 +1,8 @@
+<launch>
+  <include file="$(find heater_moveit_config)/launch/demo.launch"/>
+
+
+  <!-- <param name="move_group/constraint_approximations_path" value="config/JointConstraint"/> -->
+  <node pkg="rosservice" type="rosservice" name="rosservice" args="call /robot_enable"/>
+
+</launch>

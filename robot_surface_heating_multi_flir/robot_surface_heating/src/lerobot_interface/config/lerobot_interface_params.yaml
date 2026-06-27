@@ -1,0 +1,35 @@
+lerobot_control_node:
+  ros__parameters:
+    lerobot_output_joint_state_topic: "/lerobot_replay_joint_states"
+    ur5_params:
+      # arm_joint_state_topic: "/arm_0/joint_states"
+      # arm_joint_state_names: ["arm_0_shoulder_pan_joint", "arm_0_shoulder_lift_joint", "arm_0_elbow_joint",
+      #                         "arm_0_wrist_1_joint", "arm_0_wrist_2_joint", "arm_0_wrist_3_joint"]
+      # gripper_joint_state_topic: "/robotiq/joint_states"
+      # gripper_joint_state_names: ["robotiq_85_left_knuckle_joint"]
+      # gripper_service: "/robotiq/robotiq_gripper_controller/gripper_cmd"
+      # joint_trajectory_controller: ""
+      arm_joint_state_topic: "/arm_0/joint_states"
+      arm_joint_state_names: ["arm_0_shoulder_pan_joint", "arm_0_shoulder_lift_joint", "arm_0_elbow_joint",
+                              "arm_0_wrist_1_joint", "arm_0_wrist_2_joint", "arm_0_wrist_3_joint"]
+      arm_base_frame: "arm_0_base_link"
+      arm_eef_frame: "arm_0_tool0"
+      arm_eef_link: "arm_0_flange"
+      gripper_joint_state_topic: "/robotiq/joint_states"
+      gripper_joint_state_names: ["robotiq_85_left_knuckle_joint"]
+      gripper_service: "/robotiq/robotiq_gripper_controller/gripper_cmd"
+      joint_trajectory_control_topic: "/arm_0/scaled_joint_trajectory_controller/joint_trajectory"
+      follow_joint_trajectory_topic: "/arm_0/scaled_joint_trajectory_controller/follow_joint_trajectory"
+    # ur10e_params:
+    #   arm_joint_state_topic: "/arm_1/joint_states"
+    #   arm_joint_state_names: ['shoulder_pan_joint', 'shoulder_lift_joint', 'elbow_joint', 
+    #                           'wrist_1_joint', 'wrist_2_joint', 'wrist_3_joint']
+    #   gripper_joint_state_topic: "/arduino_gripper/joint_states"
+    #   gripper_joint_state_names: ["arduino_gripper_servo_joint"]
+    #   gripper_service: "/gripper_actuate"
+    realsense_high_params:
+      color_topic: /camera/camera/color/image_raw
+      # depth_topic: /camera/camera/depth/image_rect_raw
+      depth_topic: /camera/camera/aligned_depth_to_color/image_raw
+      camera_info_topic: /camera/camera/color/camera_info
+      camera_frame: camera_link

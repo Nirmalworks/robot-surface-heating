@@ -1,0 +1,4 @@
+int32 node_x_index
+int32 node_y_index
+---
+string completed

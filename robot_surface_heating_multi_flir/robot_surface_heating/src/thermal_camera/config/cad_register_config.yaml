@@ -1,0 +1,12 @@
+/cad_registration:  
+  ros__parameters:
+    eef_pointy_offset: [0,0,0.111125]
+    dest_dir: 'plate_11_25_25'
+    world_pts_offsets: [0.01, 0.01, 0]
+    # cad_file: '/home/cam/robot_surface_heating_dev/robot_surface_heating_multi_flir/robot_surface_heating/src/thermal_camera/thermal_camera/thin_plate.STL'
+    cad_file: '/home/cam/robot_surface_heating_dev/robot_surface_heating_multi_flir/robot_surface_heating/src/thermal_camera/thermal_camera/RSS_v3.stl'
+    frame_id: 'base_link'
+    x: 0.5
+    y: 0.0
+    z: 0.0
+    scale: 0.001 # convert mm to meters 

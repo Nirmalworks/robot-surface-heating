@@ -1,0 +1,26 @@
+/pnp_extrinsic:  
+  ros__parameters:
+    camera_count: 4
+    # camera_count: 1
+    intrinsics_dir_prefix: 'lepton'
+    # extrinsics_dir_prefix: 'extrinsic_calib_big_box_old'
+    # extrinsics_dir_prefix: 'extrinsic_calib_big_box_'
+    # extrinsics_dir_prefix: 'extrinsic_calib_big_box_2_'
+    # extrinsics_dir_prefix: 'extrinsic_calib_big_box_3_'
+    # extrinsics_dir_prefix: 'A_extrinsic_calib_post_demo_'
+    # extrinsics_dir_prefix: 'pnp_error_test_'
+    # extrinsics_dir_prefix: '09_23_25_calibration_'
+    # extrinsics_dir_prefix: '11_20_25_calibration_'
+    extrinsics_dir_prefix: '03_03_26_calibration_'
+    calibration_backup_file: 'calibration_data'
+    extrinsics_file: 'extrinsics'
+    # extrinsics_file: 'extrinsics_validation_test'
+  
+/bundle_adjustment:
+  ros__parameters:
+    camera_count: 4
+    intrinsics_dir_prefix: 'lepton'
+    # extrinsics_dir_prefix: '11_20_25_calibration_'
+    extrinsics_dir_prefix: '03_03_26_calibration_'
+    calibration_backup_file: 'calibration_data'
+    extrinsics_file: 'extrinsics'

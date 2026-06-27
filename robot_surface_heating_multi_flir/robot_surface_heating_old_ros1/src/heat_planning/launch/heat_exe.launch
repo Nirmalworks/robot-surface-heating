@@ -1,0 +1,6 @@
+<launch>
+  <!-- <node pkg="heat_planning" type="orchestrator.py" name="orchestrator" args=""/> -->
+  <node pkg="heat_planning" type="policy.py" name="policy" args=""/>
+  <node pkg="heat_planning" type="csv_logger.py" name="csv_logger" args=""/>
+
+</launch>

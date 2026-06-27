@@ -1,0 +1,4 @@
+## st_machine.py parameters
+target_temp: 110
+buffer_temp: 120
+switch_temp: 130

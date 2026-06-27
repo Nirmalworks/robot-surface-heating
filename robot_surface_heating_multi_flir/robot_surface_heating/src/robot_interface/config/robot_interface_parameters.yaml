@@ -1,0 +1,81 @@
+robot_interface:
+  ros__parameters:
+    ur5_params:
+      # standard params
+      object_approach_ort: [-0.00828499, 0.998705, 0.039051, -0.0315452]
+      gripper_service: "/robotiq/robotiq_gripper_controller/gripper_cmd"
+      joint_state_topic: "/arm_0/joint_states"
+      # gripper_grab_pos: 0.25
+      gripper_grab_pos: 0.8
+      gripper_open_pos: 0.0
+      gripper_default_effort: 0.2
+      gripper_offset: [0.0, 0.0, 0.10]
+      prelift_height: 0.06
+      lift_height: 0.14
+      # dropoff_pos: [-0.2239, -0.4106, 0.075]
+      dropoff_pos: [-0.4239, -0.4106, 0.075]
+      home_tool_pos: [-0.50, -0.0970, 0.3036]
+
+      joint_state_name: ["arm_0_shoulder_pan_joint", "arm_0_shoulder_lift_joint", "arm_0_elbow_joint", "arm_0_wrist_1_joint", "arm_0_wrist_3_joint", "arm_0_wrist_2_joint"]
+      home_joint_state_pos: [-0.037206474934713185, -1.5524686018573206, 1.5206594467163086,
+                              -1.5467045942889612, -1.5959227720843714, -1.5523031393634241]
+      home_joint_state_vel: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+      home_joint_state_effort: [0.3228207230567932, -2.282163143157959, -1.4235496520996094,
+                              -0.3065332770347595, 0.0030500823631882668, -0.14487890899181366]
+      
+      # battery cell disassembly (bcd) demo params
+      bcd_start_js_pos: [0.15110459923744202, -1.0157654921161097, 2.0836730003356934,
+                          -4.186457935963766, -1.546530548726217, -1.5808399359332483]
+      bcd_start_js_vel: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+      bcd_start_js_effort: [-0.07173793762922287, -2.9838497638702393, -0.8429207801818848,
+                          -0.14487890899181366, 0.1128530502319336, -0.23485633730888367]
+
+    ur10e_params:
+      # standard params
+      # object_approach_ort: [-0.00828499, 0.998705, 0.039051, -0.0315452]
+      # object_approach_ort: [0.66945, 0.74259, 0.017181, -0.010503]
+      object_approach_ort: [-0.0225481, 0.9990941, 0.026965, 0.0239866]
+      gripper_service: "/gripper_actuate"
+      joint_state_topic: "/arm_1/joint_states"
+      gripper_grab_pos: 0.872665  # 35 kg servo -> 50 degrees
+      gripper_open_pos: 0.0
+      gripper_default_effort: 0.2
+      # gripper_offset: [0.0, 0.0, 0.30]
+      gripper_offset: [-0.018, 0.030, 0.30]
+      prelift_height: 0.215
+      lift_height: 0.30
+      # dropoff_pos: [-1.1306, -0.5298, 0.26632]
+      # dropoff_pos: [0.21775019, -0.52107558, 0.2524397]
+      dropoff_pos: [0.41775019, -0.42107558, 0.2524397]
+      # home_tool_pos: [-0.82801, -0.17159, 0.63211]
+      home_tool_pos: [0.47541397, -0.15390427, 0.64291639]
+
+      joint_state_name: ['shoulder_pan_joint', 'shoulder_lift_joint', 'elbow_joint', 
+                              'wrist_1_joint', 'wrist_3_joint', 'wrist_2_joint']
+      home_joint_state_pos: [0.031186146661639214, -1.1852843922427674, -1.9556140899658203,
+                              -1.4872688812068482, -3.256697956715719, 1.6180853843688965]
+      home_joint_state_vel: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+      home_joint_state_effort: [0.621178925037384, 0.8799663186073303, 4.47791051864624,
+                              0.168106347322464, -0.01791095733642578, 0.10745847225189209]
+      
+      # battery cell disassembly (bcd) demo params
+      bcd_start_js_pos: [-2.157045980493063, -2.510807752609253, -4.6724800072112025,
+                          1.6801007986068726, -3.0327823797809046, -0.046109978352681935]
+      bcd_start_js_vel: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+      bcd_start_js_effort: [4.446557521820068, 0.30019253492355347, 0.06471854448318481,
+                            -0.07727057486772537, 0.0601101815700531, -0.21346288919448853]
+
+
+# gripper test params (taken from robot interface)
+gripper_test_node:
+  ros__parameters:
+    ur5_params:
+      gripper_service: "/robotiq/robotiq_gripper_controller/gripper_cmd"
+      gripper_grab_pos: 0.6
+      gripper_open_pos: 0.0
+      gripper_default_effort: 0.2
+    ur10e_params:
+      gripper_service: "/gripper_actuate"
+      gripper_grab_pos: 0.872665  # 50 degrees
+      gripper_open_pos: 0.0
+      gripper_default_effort: 0.2

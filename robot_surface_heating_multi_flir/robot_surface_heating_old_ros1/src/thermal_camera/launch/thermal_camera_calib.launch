@@ -1,0 +1,5 @@
+<launch>
+  <!-- <node pkg="heat_planning" type="orchestrator.py" name="orchestrator" args=""/> -->
+  <node pkg="thermal_camera" type="thermal-intrinsic-calibration.py" name="uvc-radiometry-calib" args=""/>
+
+</launch>

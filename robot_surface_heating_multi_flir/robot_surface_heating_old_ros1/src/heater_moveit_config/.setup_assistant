@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: motoman_gp12_support
+    relative_path: urdf/gp12_heater.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/motoman_gp12.srdf
+  CONFIG:
+    author_name: gabe
+    author_email: gabe@gabe.com
+    generated_timestamp: 1695329713

@@ -1,0 +1,59 @@
+[WARN] [1754357308.198728694] [robot_interface_node]: DEBUG: start heating_control_loop
+[INFO] [1754357308.198922384] [robot_interface_node]: got coldest point: x=0.071, y=0.047, z=0.109, temp=34.450C
+[INFO] [1754357308.199112604] [robot_interface_node]: 	coldest point ort: geometry_msgs.msg.Quaternion(x=-0.7067379861567327, y=-0.022834450066246778, z=0.02283444975444063, w=0.7067379958072935)
+[INFO] [1754357308.199299842] [robot_interface_node]: got hottest point: x=0.320, y=0.101, z=0.141, temp=66.885C
+[INFO] [1754357308.199481541] [robot_interface_node]: 	hottest point ort: geometry_msgs.msg.Quaternion(x=-0.7064988349050754, y=-0.024890686144605656, z=0.024878719309193442, w=0.7068386657127325)
+[WARN] [1754357308.199691986] [robot_interface_node]: DEBUG: start taking action
+[INFO] [1754357308.199862143] [robot_interface_node]: Waiting for overheat point to cool...
+[WARN] [1754357308.200067873] [robot_interface_node]: DEBUG: early end heating_control_loop [0.001344s]
+True
+[INFO] [1754357308.200252315] [robot_interface_node]: end while loop
+True
+[INFO] [1754357308.200429788] [robot_interface_node]: start while loop
+[WARN] [1754357308.200630684] [robot_interface_node]: DEBUG: start heating_control_loop
+[INFO] [1754357308.200809233] [robot_interface_node]: got coldest point: x=0.071, y=0.047, z=0.109, temp=34.450C
+[INFO] [1754357308.200986687] [robot_interface_node]: 	coldest point ort: geometry_msgs.msg.Quaternion(x=-0.7067379861567327, y=-0.022834450066246778, z=0.02283444975444063, w=0.7067379958072935)
+[INFO] [1754357308.201194253] [robot_interface_node]: got hottest point: x=0.320, y=0.101, z=0.141, temp=66.885C
+[INFO] [1754357308.201385348] [robot_interface_node]: 	hottest point ort: geometry_msgs.msg.Quaternion(x=-0.7064988349050754, y=-0.024890686144605656, z=0.024878719309193442, w=0.7068386657127325)
+[WARN] [1754357308.201604999] [robot_interface_node]: DEBUG: start taking action
+[INFO] [1754357308.201778578] [robot_interface_node]: Waiting for overheat point to cool...
+[WARN] [1754357308.201989937] [robot_interface_node]: DEBUG: early end heating_control_loop [0.001349s]
+True
+[INFO] [1754357308.202178166] [robot_interface_node]: end while loop
+True
+[INFO] [1754357308.202362856] [robot_interface_node]: start while loop
+[WARN] [1754357308.202570357] [robot_interface_node]: DEBUG: start heating_control_loop
+[INFO] [1754357308.202747398] [robot_interface_node]: got coldest point: x=0.071, y=0.047, z=0.109, temp=34.450C
+[INFO] [1754357308.202927864] [robot_interface_node]: 	coldest point ort: geometry_msgs.msg.Quaternion(x=-0.7067379861567327, y=-0.022834450066246778, z=0.02283444975444063, w=0.7067379958072935)
+[INFO] [1754357308.203111634] [robot_interface_node]: got hottest point: x=0.320, y=0.101, z=0.141, temp=66.885C
+[INFO] [1754357308.203294771] [robot_interface_node]: 	hottest point ort: geometry_msgs.msg.Quaternion(x=-0.7064988349050754, y=-0.024890686144605656, z=0.024878719309193442, w=0.7068386657127325)
+[WARN] [1754357308.203513791] [robot_interface_node]: DEBUG: start taking action
+[INFO] [1754357308.203710078] [robot_interface_node]: Waiting for overheat point to cool...
+[WARN] [1754357308.203918592] [robot_interface_node]: DEBUG: early end heating_control_loop [0.001347s]
+True
+[INFO] [1754357308.204103037] [robot_interface_node]: end while loop
+True
+[INFO] [1754357308.204283536] [robot_interface_node]: start while loop
+[WARN] [1754357308.204486758] [robot_interface_node]: DEBUG: start heating_control_loop
+[INFO] [1754357308.204668006] [robot_interface_node]: got coldest point: x=0.071, y=0.047, z=0.109, temp=34.450C
+[INFO] [1754357308.204852596] [robot_interface_node]: 	coldest point ort: geometry_msgs.msg.Quaternion(x=-0.7067379861567327, y=-0.022834450066246778, z=0.02283444975444063, w=0.7067379958072935)
+[INFO] [1754357308.205029205] [robot_interface_node]: got hottest point: x=0.320, y=0.101, z=0.141, temp=66.885C
+[INFO] [1754357308.205228035] [robot_interface_node]: 	hottest point ort: geometry_msgs.msg.Quaternion(x=-0.7064988349050754, y=-0.024890686144605656, z=0.024878719309193442, w=0.7068386657127325)
+[WARN] [1754357308.205584911] [robot_interface_node]: DEBUG: start taking action
+[INFO] [1754357308.205830412] [robot_interface_node]: Waiting for overheat point to cool...
+[WARN] [1754357308.206056477] [robot_interface_node]: DEBUG: early end heating_control_loop [0.001559s]
+True
+[INFO] [1754357308.206248828] [robot_interface_node]: end while loop
+True
+[INFO] [1754357308.206429975] [robot_interface_node]: start while loop
+[WARN] [1754357308.206634267] [robot_interface_node]: DEBUG: start heating_control_loop
+[INFO] [1754357308.206809513] [robot_interface_node]: got coldest point: x=0.071, y=0.047, z=0.109, temp=34.450C
+[INFO] [1754357308.206992009] [robot_interface_node]: 	coldest point ort: geometry_msgs.msg.Quaternion(x=-0.7067379861567327, y=-0.022834450066246778, z=0.02283444975444063, w=0.7067379958072935)
+[INFO] [1754357308.207172931] [robot_interface_node]: got hottest point: x=0.320, y=0.101, z=0.141, temp=66.885C
+[INFO] [1754357308.207366194] [robot_interface_node]: 	hottest point ort: geometry_msgs.msg.Quaternion(x=-0.7064988349050754, y=-0.024890686144605656, z=0.024878719309193442, w=0.7068386657127325)
+[WARN] [1754357308.207574331] [robot_interface_node]: DEBUG: start taking action
+[INFO] [1754357308.207742091] [robot_interface_node]: Waiting for overheat point to cool...
+[WARN] [1754357308.207949654] [robot_interface_node]: DEBUG: early end heating_control_loop [0.001311s]
+True
+[INFO] [1754357308.208129616] [robot_interface_node]: end while loop
+True

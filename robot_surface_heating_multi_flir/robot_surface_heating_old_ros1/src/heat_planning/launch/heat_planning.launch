@@ -1,0 +1,12 @@
+<launch>
+  <include file="$(find heater_moveit_config)/launch/demo.launch"/>
+
+
+  <!-- <param name="move_group/constraint_approximations_path" value="config/JointConstraint"/> -->
+  <node pkg="rosservice" type="rosservice" name="rosservice" args="call /robot_enable"/>
+  <node pkg="heat_planning" type="tcp_pos_publisher.py" name="tcp_pos_publisher" args=""/>
+  <!-- <node pkg="heat_planning" type="moveit_node.py" name="controller" args=""/> -->
+  <node pkg="heat_planning" type="csv_logger.py" name="csv_logger" args=""/>
+  <!-- <node pkg="thermal_camera" type="thermal_sensor.py" name="Thermal_Sensor_Node" args=""/> -->
+
+</launch>

@@ -1,0 +1,79 @@
+## overlapping parameters
+node_num_x: 12
+node_num_y: 5
+
+## st_machine.py parameters
+target_temp: 110
+buffer_temp: 120
+switch_temp: 125
+min_temp: 110
+max_temp: 140
+
+csv_file_name_st_machine: "/home/cam/st_heat/state_csv/110_120_130_Normal_Al_15_30_flow_3_400C.csv"
+
+## thermal camera code parameters
+nodes_x: 12
+nodes_y: 5
+
+x_start: 0
+x_end: 2000  
+y_start: 0
+y_end: 1000
+
+# 1 cam points
+
+# orig_pts: [[173, 177], [460, 184], [77, 353], [552, 359]]
+# dest_pts: [[0, 0], [1000, 0], [0, 1000], [1000, 1000]]
+
+# # 2 cam points OLD
+# orig_pts: [[202, 171], [504, 193], [95, 361], [600, 404]]
+# dest_pts: [[0, 0], [1000, 0], [0, 1000], [1000, 1000]]
+
+# orig_pts_1: [[151, 235], [460, 235], [35, 439], [566, 426]]
+# dest_pts_1: [[0, 0], [1000, 0], [0, 1000], [1000, 1000]]
+
+orig_pts: [[216, 166], [493, 178], [104, 302], [600, 322]]
+dest_pts: [[0, 0], [1000, 0], [0, 1000], [1000, 1000]]
+
+orig_pts_1: [[191, 222], [481, 226], [68, 360], [607, 361]]
+dest_pts_1: [[0, 0], [1000, 0], [0, 1000], [1000, 1000]]
+
+
+
+csv_filename: "/home/cam/ND_ws/robot_surface_heating_ws/src/data/110_120_130_Al_15_30_flow_full_400C_ts_130_normal_density_4_nodes_hopping_EXP_20.csv"
+
+# transform_x: 1200
+# transform_y: 1200
+
+## motion planning code parameters
+
+
+# y_end_mp: -0.608
+
+x_start_mp: -0.352
+x_end_mp: 0.383 
+y_start_mp: -0.940
+y_end_mp: -0.538
+
+# x_start_mp: -0.355
+# x_end_mp: 0.007
+# y_start_mp: -1.0
+# y_end_mp: -0.63
+
+# x_start_mp: -0.344
+# x_end_mp: -0.019
+# y_start_mp: -.974
+# y_end_mp: -0.652
+
+
+# policy_type: "zigzag"
+policy_type: "bnb"
+
+
+thermal_dynamic_offset: False
+
+# offset vals for raw data
+cam_0_static_offset: 250
+cam_1_static_offset: 0
+
+num_cameras: 2

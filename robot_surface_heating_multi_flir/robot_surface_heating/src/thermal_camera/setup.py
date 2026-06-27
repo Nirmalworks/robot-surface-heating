@@ -1,0 +1,61 @@
+from setuptools import find_packages, setup
+import os
+from glob import glob
+
+package_name = 'thermal_camera'
+
+setup(
+    name=package_name,
+    version='0.0.0',
+    packages=find_packages(exclude=['test']),
+    data_files=[
+        ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
+        ('share/' + package_name, ['package.xml']),
+        (os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py')),
+        (os.path.join('share', package_name, 'config'), glob('config/*.yaml')),
+    ],
+    install_requires=['setuptools'],
+    zip_safe=True,
+    maintainer='root',
+    maintainer_email='root@todo.todo',
+    description='TODO: Package description',
+    license='TODO: License declaration',
+    tests_require=['pytest'],
+    entry_points={
+        'console_scripts': [
+            'uvc_visualize = thermal_camera.uvc_visualize:main',
+            'thermal_camera_publisher = thermal_camera.publisher_thermal:main',
+            'camera_frame_broadcaster = thermal_camera.camera_frame_broadcaster:main',
+            'simple_cad_visualizer = thermal_camera.cad_visualization:main',
+            'project_colored_cloud = thermal_camera.pointcloud_coloration:main',
+            'project_colored_cloud_single = thermal_camera.pointcloud_coloration_single:main',
+            'pnp_extrinsic = thermal_camera.pnp_extrinsic:main',
+            'extrema_publisher = thermal_camera.extrema_pub:main',
+            'extrema_publisher_modular = thermal_camera.extrema_pub_modular:main',
+            'hottest_temp_pub = thermal_camera.hottest_temp_pub:main',
+            'o3d_visual_surface = thermal_camera.o3d_visual_surface:main',
+            'rosbag_writer = thermal_camera.thermal_data_collector:main',
+            'rosbag_reader = thermal_camera.rosbag_reader:main',
+            'live_temp_plotter = thermal_camera.live_temp_plotter:main',
+            'virtual_camera = thermal_camera.virtual_camera_viewer:main',
+            'robot_mask_pub = thermal_camera.robot_mask_pub:main',
+            'timestamp_comparator = thermal_camera.timestamp_comparator:main',
+            'realtime_masked_visualizer = thermal_camera.realtime_masked_visualizer:main',
+            'zigzag_policy = thermal_camera.zigzag_policy:main',
+            'traj_rosbag_reader = thermal_camera.traj_rosbag_reader:main',
+            'bundle_adjustment = thermal_camera.bundle_adjustment:main',
+            'thermal_rerun = thermal_camera.thermal_rerun:main',
+            'thermal_model_reader = thermal_camera.thermal_model_reader:main',
+            'mpc_test_1 = thermal_camera.mpc_test_1:main',
+            'stl_to_lattice = thermal_camera.stl_to_lattice:main',
+            'heating_path_data_collection = thermal_camera.heating_path_data_collection:main',
+            'optimize_single_real = thermal_camera.optimize_single_real:main',
+            'heater_path_to_cartesian = thermal_camera.heater_path_to_cartesian:main',
+            'debug_surface_normals = thermal_camera.debug_surface_normals:main',
+            'continuous_replanner = thermal_camera.continuous_replanner:main',
+            'heater_manual = thermal_camera.heater_manual:main',
+            'heat_gun_controller = thermal_camera.heat_gun_controller:main',
+            'greedy_replanner = thermal_camera.greedy_replanner:main',
+        ],
+    },
+)

@@ -1,0 +1,10 @@
+/pointcloud_projector_multi_camera:
+  ros__parameters:
+    camera_count: 4
+    # source_pointcloud_topic: "/selected_surface_points"
+    source_pointcloud_topic: "/cad_pointcloud"
+/pointcloud_coloration_node:
+  ros__parameters:
+    camera_count: 4
+    source_pointcloud_topic: "/selected_surface_points"
+    # source_pointcloud_topic: "/raw_thermal_pointcloud"

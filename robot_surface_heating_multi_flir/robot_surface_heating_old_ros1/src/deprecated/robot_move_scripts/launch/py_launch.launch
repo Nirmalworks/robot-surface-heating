@@ -1,0 +1,9 @@
+<launch>
+  <!-- <include file="$(find motoman_gp12_moveit_heater_config)/launch/demo_custom_launcher.launch"/> -->
+  <include file="$(find motoman_gp12_moveit_config)/launch/demo_day_launcher.launch"/>
+
+
+  <!-- <param name="move_group/constraint_approximations_path" value="config/JointConstraint"/> -->
+  <node pkg="rosservice" type="rosservice" name="rosservice" args="call /robot_enable"/>
+
+</launch>
