@@ -21,7 +21,7 @@ it, repeating until the surface reaches a uniform temperature.
 9. [Configuration](#8-configuration)
 10. [Starting a new "move-only" project](#9-starting-a-new-move-only-project)
 11. [Driving the arm from a custom model](#10-driving-the-arm-from-a-custom-model)
-12. [Quick start — running the heating demo](#11-quick-start--running-the-heating-demo)
+12. [Quick start  running the heating demo](#11-quick-start--running-the-heating-demo)
 
 ---
 
