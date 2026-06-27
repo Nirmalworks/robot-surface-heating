@@ -56,7 +56,7 @@ Nodes do not call each other directly; they exchange data over named channels.
 The stack is layered from the physical hardware down to the software that drives
 it. Each layer depends only on the one above it.
 
-![System architecture](assets/02-architecture.png)
+![System architecture](02-architecture.png)
 
 ---
 
@@ -65,7 +65,7 @@ it. Each layer depends only on the one above it.
 The diagram below shows the nodes that run during a live demo and the topics
 that connect them.
 
-![Runtime pipeline](assets/03-pipeline.png)
+![Runtime pipeline](03-pipeline.png)
 
 ### Key topics
 
@@ -476,7 +476,7 @@ Any decision-maker can drive the arm — the heating planner is just one option.
 A vision model, a reinforcement-learning policy, or a plain script can all
 produce goals; the arm is agnostic to their source.
 
-![Custom model integration](assets/05-model-integration.png)
+![Custom model integration](05-model-integration.png)
 
 The model outputs a target (a pose or a set of joint angles). `move_node.py`
 receives it, hands it to MoveIt and the driver, and the arm executes a safe
