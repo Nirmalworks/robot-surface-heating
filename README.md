@@ -11,15 +11,17 @@ it, repeating until the surface reaches a uniform temperature.
 ## Table of contents
 
 1. [Overview](#1-overview)
-2. [ROS 2 concepts used here](#2-ros-2-concepts-used-here)
-3. [System architecture](#3-system-architecture)
-4. [Runtime pipeline](#4-runtime-pipeline)
-5. [Project structure](#project-structure)
-6. [Source files by package (detailed reference)](#6-source-files-by-package-detailed-reference)
-7. [Configuration](#7-configuration)
-8. [Starting a new "move-only" project](#8-starting-a-new-move-only-project)
-9. [Driving the arm from a custom model](#9-driving-the-arm-from-a-custom-model)
-10. [Quick start — running the heating demo](#10-quick-start--running-the-heating-demo)
+2. [What this project achieves](#2-what-this-project-achieves)
+3. [ROS 2 concepts used here](#3-ros-2-concepts-used-here)
+4. [System architecture](#4-system-architecture)
+5. [Runtime pipeline](#5-runtime-pipeline)
+6. [Controllers compared: Greedy vs. MPC](#6-controllers-compared-greedy-vs-mpc)
+7. [Project structure](#project-structure)
+8. [Source files by package (detailed reference)](#7-source-files-by-package-detailed-reference)
+9. [Configuration](#8-configuration)
+10. [Starting a new "move-only" project](#9-starting-a-new-move-only-project)
+11. [Driving the arm from a custom model](#10-driving-the-arm-from-a-custom-model)
+12. [Quick start — running the heating demo](#11-quick-start--running-the-heating-demo)
 
 ---
 
@@ -35,7 +37,39 @@ evenly heated.
 
 ---
 
-## 2. ROS 2 concepts used here
+## 2. What this project achieves
+
+This work automates a process that is normally manual: bringing a surface to a
+uniform target temperature with a robot-mounted heat gun. The contribution is
+that **both the trajectory and the heating intensity are controlled together** —
+prior automated approaches move the tool but leave intensity fixed.
+
+**System built**
+
+- A **TRIAC-based intensity stage** (custom PCB) that modulates the 1500 W heat
+  gun via phase-angle firing, giving continuous, repeatable control of delivered
+  power. Open-loop characterization is monotonic and repeatable across the firing
+  range.
+- A **multi-camera FLIR Lepton thermal pipeline** that fuses several thermal
+  views into a single live 3D temperature field, with URDF-based occlusion
+  masking so the arm itself is removed from the reconstruction.
+- A **physics-based thermal model** (2D finite-difference heat diffusion with a
+  moving Gaussian source) fit offline in PyTorch and validated against an
+  NVIDIA Warp solver. The model lets the planner predict how heat will spread.
+- A **closed-loop planning layer** that re-plans continuously and drives the arm
+  toward whichever region is coldest or out of band.
+
+**Headline result**
+
+A head-to-head experiment compared three controllers on a planar composite panel
+(10 mm analysis grid, 40–50 °C target band, firing clamped to 25–65 %, five
+trials per policy). The adaptive controller (**MPC Dynamic**) holds **87–90 % of
+the surface inside the target band at steady state, versus ~55 % for the
+static baseline** — roughly a 1.6× improvement in uniform coverage.
+
+---
+
+## 3. ROS 2 concepts used here
 
 The software is organized as a set of independent processes called **nodes**.
 Nodes do not call each other directly; they exchange data over named channels.
@@ -51,7 +85,7 @@ Nodes do not call each other directly; they exchange data over named channels.
 
 ---
 
-## 3. System architecture
+## 4. System architecture
 
 The stack is layered from the physical hardware down to the software that drives
 it. Each layer depends only on the one above it.
@@ -60,7 +94,7 @@ it. Each layer depends only on the one above it.
 
 ---
 
-## 4. Runtime pipeline
+## 5. Runtime pipeline
 
 The diagram below shows the nodes that run during a live demo and the topics
 that connect them.
@@ -88,6 +122,71 @@ that connect them.
   the frame.
 - **`PoseToPlan`** (service) — accepts a position and orientation, returns
   `success: true/false`.
+
+---
+
+## 6. Controllers compared: Greedy vs. MPC
+
+The planning layer is the part that decides *where to heat next*, and the project
+evaluated three strategies. They differ in whether they use a thermal model and
+whether they reason about the future.
+
+### The three policies
+
+| Policy | Uses a model? | Plans ahead? | Intensity | File |
+|---|---|---|---|---|
+| **Greedy** | No | No | Fixed firing % | `greedy_replanner.py` |
+| **MPC Static** | Yes | Yes (4 s horizon) | One fixed % per plan | `mpc_test_1.py` / `extrema_pub_modular.py` |
+| **MPC Dynamic** | Yes | Yes (4 s horizon) | Varies along the path | `continuous_replanner.py` |
+
+### How Greedy works
+
+Find the coldest cell in the fused grid, point the heat gun at it, fire at a
+fixed percentage, repeat. No model, no horizon, no temporal reasoning. Two
+failure modes follow directly:
+
+- **Oscillation (spatial pathology).** Once the coldest cell warms, a neighbor
+  becomes coldest, so the arm jumps back and forth across a cluster of cold
+  cells, never letting any of them stabilize.
+- **Overshoot (temporal pathology).** A fixed firing percentage with no temporal
+  authority means cells the arm dwells over blow past the target band.
+
+### How MPC works
+
+Re-plan every 2 seconds over a 4-second horizon:
+
+1. Read the fused thermal grid.
+2. Sample *K* candidate target cells (cold or out of band).
+3. Fit *K* B-spline paths from the current end-effector pose to each target.
+4. Roll out every candidate forward 4 s under the learned thermal model
+   (batched GPU rollout).
+5. Score each with the cost function below.
+6. Execute the first 2 s of the winning plan, then re-plan.
+
+The cost function balances getting on-temperature against smooth, short paths:
+
+```
+J = J_temp + λ_c · J_curv + λ_l · J_len
+```
+
+**MPC Static** uses one fixed firing percentage per plan. **MPC Dynamic** lets
+the firing percentage vary along the trajectory, which is what gives it temporal
+authority over each cell.
+
+### Results
+
+| Policy | Time to band | Steady-state in-band coverage |
+|---|---|---|
+| Greedy | — (overshoots, never stabilizes) | low / unstable |
+| MPC Static | **58.6 s** (SD 5.1 s) | ~55 % |
+| MPC Dynamic | 85.8 s (SD 7.3 s) | **87–90 %** |
+
+The apparent paradox is the point: **MPC Static reaches the band *faster*, but
+MPC Dynamic *stays* in band**. Time-to-band is only half the story — Static
+enters quickly but then drifts out (temporal pathology), while Dynamic, by
+varying intensity along the path, solves both the oscillation (spatial) and the
+drift (temporal) problems. Jointly optimizing trajectory *and* intensity is what
+delivers uniform coverage.
 
 ---
 
@@ -215,7 +314,7 @@ robot_surface_heating/
         └── thermal_moveit_config/                 # MoveIt config for this cell
 ```
 
-## 6. Source files by package (detailed reference)
+## 7. Source files by package (detailed reference)
 
 Legend: **● live system · ○ experimental / legacy (safe to ignore while
 learning) · ◆ shared helper imported by other files.**
@@ -371,7 +470,7 @@ description package** — the arm requires it to know its own geometry.
 
 ---
 
-## 7. Configuration
+## 8. Configuration
 
 Most behavior is configurable without code changes. In
 `src/thermal_camera/config/`:
@@ -388,7 +487,7 @@ which part's CAD model is loaded.
 
 ---
 
-## 8. Starting a new "move-only" project
+## 9. Starting a new "move-only" project
 
 To build a clean project that only moves the UR arm — without any thermal or
 heating code — keep the robot-driving foundation and remove the rest. Motion
@@ -470,7 +569,7 @@ names differ.
 
 ---
 
-## 9. Driving the arm from a custom model
+## 10. Driving the arm from a custom model
 
 Any decision-maker can drive the arm — the heating planner is just one option.
 A vision model, a reinforcement-learning policy, or a plain script can all
@@ -484,7 +583,7 @@ path. That is the entire integration.
 
 ---
 
-## 10. Quick start — running the heating demo
+## 11. Quick start — running the heating demo
 
 Run each command in its own terminal from `robot_surface_heating/`, after
 `source install/setup.bash`:
