@@ -606,9 +606,7 @@ reliability to *Best Effort*.
 ## 12.Research paper
 
 This project is written up as a paper. The source PDF is checked into the repo
-at [`paper/Adaptive_Robotic_Surface_Heating.pdf`](paper/Adaptive_Robotic_Surface_Heating.pdf);
-the full text and every figure are reproduced below so the writeup is readable
-directly on this page.
+at [`paper/Adaptive_Robotic_Surface_Heating.pdf`](paper/Adaptive_Robotic_Surface_Heating.pdf)
 
 
 
