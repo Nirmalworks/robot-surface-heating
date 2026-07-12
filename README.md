@@ -22,7 +22,8 @@ it, repeating until the surface reaches a uniform temperature.
 10. [Starting a new "move-only" project](#9-starting-a-new-move-only-project)
 11. [Driving the arm from a custom model](#10-driving-the-arm-from-a-custom-model)
 12. [Quick start  running the heating demo](#11-quick-start--running-the-heating-demo)
-13. [Full research paper](#12-full-research-paper)
+13. [Full research paper](#12-research-paper)
+14. [Experiment photos and videos](#13-experiment-photos-and-videos)
 
 ---
 
@@ -619,3 +620,26 @@ at [`paper/Adaptive_Robotic_Surface_Heating.pdf`](paper/Adaptive_Robotic_Surface
   config; drop everything `thermal_*` and `robot_interface`; and write one small
   `move_node.py` that sends a joint or pose goal from any source, including a
   custom model.
+
+---
+
+## 13. Experiment photos and videos
+
+Raw photos and clips from five physical test parts are checked into
+[`media/experiments/`](media/experiments/): **black composite**, **honeycomb**,
+**metal bumper**, **saddle mold**, and **shell mold**. For each part the set
+generally includes:
+
+- **Setup photos** — the part mounted in the test cell.
+- **End-effector photos** — the heat-gun tool head (pointed nozzle, light-bulb,
+  and heat-gun variants) in position over the part.
+- **Selection views** (`local` / `large` / `contour`) — the surface region
+  picked in the `o3d_visual_surface.py` picker.
+- **RViz views** (`local` / `large` / `contour`) — the corresponding live
+  thermal point cloud in RViz.
+- **Pointcloud / lattice renders** — the reconstructed 3D temperature field and
+  its targetable point lattice, some rendered in Matplotlib.
+
+Three short clips are also included: `Video of Black composite part.mp4`,
+`Video of Honeycomb Part.mp4`, `video of shell mold (new part).mp4`, and
+`RVIZ video of saddle mold.webm`.
