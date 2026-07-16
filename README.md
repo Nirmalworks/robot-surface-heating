@@ -642,4 +642,4 @@ generally includes:
 
 Three short clips are also included: `Video of Black composite part.mp4`,
 `Video of Honeycomb Part.mp4`, `video of shell mold (new part).mp4`, and
-`RVIZ video of saddle mold.webm`.
+`RVIZ video of saddle mold.mp4`.
