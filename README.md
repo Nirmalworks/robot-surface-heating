@@ -23,7 +23,8 @@ it, repeating until the surface reaches a uniform temperature.
 11. [Driving the arm from a custom model](#10-driving-the-arm-from-a-custom-model)
 12. [Quick start  running the heating demo](#11-quick-start--running-the-heating-demo)
 13. [Full research paper](#12-research-paper)
-14. [Experiment photos and videos](#13-experiment-photos-and-videos)
+14. [TRIAC intensity stage: circuit files](#13-triac-intensity-stage-circuit-files)
+15. [Experiment photos and videos](#14-experiment-photos-and-videos)
 
 ---
 
@@ -623,7 +624,20 @@ at [`paper/Adaptive_Robotic_Surface_Heating.pdf`](paper/Adaptive_Robotic_Surface
 
 ---
 
-## 13. Experiment photos and videos
+## 13. TRIAC intensity stage: circuit files
+
+The custom PCB referenced in [section 2](#2-what-this-project-achieves) that
+modulates the 1500 W heat gun via phase-angle firing is checked into the repo
+root:
+
+- [`Circuit .kicad_pcb`](Circuit%20.kicad_pcb) — KiCad PCB layout for the
+  TRIAC-based intensity stage.
+- [`Print Schematic.pdf`](Print%20Schematic.pdf) — printable schematic of the
+  same circuit.
+
+---
+
+## 14. Experiment photos and videos
 
 Raw photos and clips from five physical test parts are checked into
 [`media/experiments/`](media/experiments/): **black composite**, **honeycomb**,
